@@ -37,25 +37,23 @@ const NavTabs: React.FC = () => {
   return (
     <div className={styles.tabHolder}>
       <Container>
-        <div className={styles.tabsection}>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            variant={isSmallScreen ? "scrollable" : "fullWidth"}
-            TabIndicatorProps={{
-              style: {
-                backgroundColor: "green",
-                color: "green",
-              },
-            }}
-          >
-            <LinkTab label="sports" href="/sports" />
-            <LinkTab label="live" href="/live" />
-            <LinkTab label="casino" href="/spam" />
-            <LinkTab label="esports" href="/esports" />
-            <LinkTab label="vegas" href="/vegas" />
-          </Tabs>
-        </div>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          variant={isSmallScreen ? "scrollable" : "fullWidth"}
+          TabIndicatorProps={{
+            style: {
+              backgroundColor: "green",
+              color: "green",
+            },
+          }}
+        >
+          <LinkTab label="sports" href="/sports" />
+          <LinkTab label="live" href="/live" />
+          <LinkTab label="casino" href="/spam" />
+          <LinkTab label="esports" href="/esports" />
+          <LinkTab label="vegas" href="/vegas" />
+        </Tabs>
       </Container>
     </div>
   );

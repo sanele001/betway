@@ -60,6 +60,7 @@ const Home: React.FC<Props> = ({ promoText }) => {
   );
 };
 export const getStaticProps: GetStaticProps = async (context) => {
+  //local end point
   const res = await fetch("http://localhost:3000/api");
   const textPromise = res.json();
   const promoText = await textPromise;

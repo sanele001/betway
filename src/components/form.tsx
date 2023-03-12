@@ -7,9 +7,8 @@ import {
   Divider,
 } from "@mui/material";
 import style from "@/styles/Formstyl.module.css";
-import { FaBullseye, FaGoogle } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { useState } from "react";
-import handler from "@/pages/api";
 
 function Prograss() {
   return (
