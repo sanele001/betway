@@ -7,8 +7,9 @@ import {
   Divider,
 } from "@mui/material";
 import style from "@/styles/Formstyl.module.css";
-import { FaGoogle } from "react-icons/fa";
+import { FaBullseye, FaGoogle } from "react-icons/fa";
 import { useState } from "react";
+import handler from "@/pages/api";
 
 function Prograss() {
   return (
@@ -28,19 +29,36 @@ const Signin: React.FC = () => {
   // submit handler
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     if (!validateEmail(email)) {
       setErrorMessage("Please enter a valid email address.");
       return;
     } else if (!validatePassword(password)) {
-      setErrorMessage("Your password is not strong");
+      setErrorMessage("Weak password detected");
+      mockSign();
+    } else {
+      mockSign();
     }
   };
+  //
+
+  const mockSign = async () => {
+    try {
+      setIsloading(true);
+      const res = await fetch("https://jsonplaceholder.typicode.com/users/1");
+      const resPromise = await res.json();
+      console.log("welcome, ", resPromise.name);
+      setIsloading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // email handler
   const handleEmailChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setEmail(e.target.value);
-    console.log(e.target.value);
   };
 
   // password handler
@@ -73,7 +91,9 @@ const Signin: React.FC = () => {
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <div className={style.formIntro}>
-          <h2 style={{ color: "green" }}>Sign in</h2>
+          <h2 style={{ color: "green" }} data-testid="signinTitle">
+            Sign in
+          </h2>
           <p>
             New customer?
             <span>
@@ -85,7 +105,7 @@ const Signin: React.FC = () => {
           <p style={{ color: "red" }}>{errorMessage}</p>
         </div>
         <Divider />
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} data-testid="signInForm">
           <TextField
             id="standard-basic"
             label="Email"
