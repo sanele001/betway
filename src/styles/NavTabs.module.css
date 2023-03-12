@@ -1,0 +1,9 @@
+.tabHolder {
+  display: flex;
+  background: #28282b;
+  width: 100vw;
+  align-items: center;
+  padding: 1rem;
+  padding-bottom: 10px;
+  font-size: 1.2rem;
+}

@@ -1,0 +1,16 @@
+.formIntro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.formIntro h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.accountRecovery {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}

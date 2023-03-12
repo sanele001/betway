@@ -1,0 +1,47 @@
+.hero {
+  width: 100vw;
+  height: 85vh;
+  background-image: url("https://cdn.betwaygroup.com/medusa-production/1001/the-hunch-mobile.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.callToaction {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(14, 13, 13, 0.5);
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: drop 2s ease-in-out;
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(50%);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-30%);
+  }
+  90% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
