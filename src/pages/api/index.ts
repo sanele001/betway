@@ -8,7 +8,7 @@ type Data = {
 
 const text = {
   title: "SPORTS NEW CUSTOMER OFFER",
-  promo: "Get up to R10 in free bets",
+  promo: "Get up to \u00A310 in free bets",
 };
 
 export default function handler(

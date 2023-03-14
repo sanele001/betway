@@ -15,9 +15,9 @@ const Hero: React.FC<Props> = ({ promoText }) => {
     <div className={styles.hero}>
       <div className={styles.callToaction}>
         <div className={styles.content}>
-          <h3>{promoText.title}</h3>
-          <h2>{promoText.promo}</h2>
-          <Button variant="contained" color="success">
+          <p className={styles.smallText}>{promoText.title}</p>
+          <h2 className={styles.bigText}>{promoText.promo}</h2>
+          <Button variant="contained" className={styles.callToActionbtn}>
             Join Now
           </Button>
         </div>

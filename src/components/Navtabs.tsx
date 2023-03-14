@@ -1,7 +1,26 @@
 import { Tabs, Tab, Container, useMediaQuery, useTheme } from "@mui/material";
-
+import { styled } from "@mui/material/styles";
 import styles from "@/styles/NavTabs.module.css";
 import { useState } from "react";
+
+const CustomTabs = styled(Tabs)({
+  "& .Mui-selected": {
+    color: "white", // Change the font active tab
+  },
+  "& .Mui-selected .MuiTab-wrapper": {
+    fontWeight: "bold", // Change the font weight of the active tab
+  },
+  "& .MuiTabs-indicator": {
+    backgroundColor: "green", // Change the color of the indicator bar
+  },
+  //
+  "& .MuiTab-root": {
+    color: "grey",
+    "&.Mui-selected": {
+      color: "white", // Change the color of the selected tab back to default
+    },
+  },
+});
 
 interface LinkTabProps {
   label?: string;
@@ -9,17 +28,17 @@ interface LinkTabProps {
 }
 
 function LinkTab(props: LinkTabProps) {
-  const tabStyle = {
-    color: "white",
-    fontSize: "0.7rem",
-  };
   return (
     <Tab
       component="a"
       onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         event.preventDefault();
       }}
-      style={tabStyle}
+      style={{
+        fontSize: "0.9rem",
+        fontWeight: "bold",
+        textTransform: "lowercase",
+      }}
       {...props}
     />
   );
@@ -37,23 +56,17 @@ const NavTabs: React.FC = () => {
   return (
     <div className={styles.tabHolder}>
       <Container>
-        <Tabs
+        <CustomTabs
           value={value}
           onChange={handleChange}
           variant={isSmallScreen ? "scrollable" : "fullWidth"}
-          TabIndicatorProps={{
-            style: {
-              backgroundColor: "green",
-              color: "green",
-            },
-          }}
         >
           <LinkTab label="sports" href="/sports" />
           <LinkTab label="live" href="/live" />
           <LinkTab label="casino" href="/spam" />
           <LinkTab label="esports" href="/esports" />
           <LinkTab label="vegas" href="/vegas" />
-        </Tabs>
+        </CustomTabs>
       </Container>
     </div>
   );

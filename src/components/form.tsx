@@ -5,24 +5,20 @@ import {
   CardContent,
   CircularProgress,
   Divider,
+  InputBase,
+  styled,
+  FormControl,
+  InputLabel,
 } from "@mui/material";
-import style from "@/styles/Formstyl.module.css";
-import { FaGoogle } from "react-icons/fa";
-import { useState } from "react";
+import styles from "@/styles/Formstyl.module.css";
 
-function Prograss() {
-  return (
-    <>
-      <CircularProgress size={20} color="warning" />
-    </>
-  );
-}
+import { useState } from "react";
 
 const Signin: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isloading, setIsloading] = useState(false);
-  const [btnDisable, setBtnDesable] = useState(true);
+
   const [errorMessage, setErrorMessage] = useState("");
 
   // submit handler
@@ -42,12 +38,20 @@ const Signin: React.FC = () => {
   //
 
   const mockSign = async () => {
+    const data = {
+      username: email,
+      password,
+    };
     try {
-      setIsloading(true);
-      const res = await fetch("https://jsonplaceholder.typicode.com/users/1");
-      const resPromise = await res.json();
-      console.log("welcome, ", resPromise.name);
-      setIsloading(false);
+      const response = await fetch("http://localhost:3000/api/mocksign", {
+        method: "POST", //
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const user = await response.json();
+      console.log(`Wellcome ${user.name}`);
     } catch (error) {
       console.log(error);
     }
@@ -65,11 +69,6 @@ const Signin: React.FC = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setPassword(e.target.value);
-    if (password.length > 2) {
-      setBtnDesable(false);
-    } else {
-      setBtnDesable(true);
-    }
   };
 
   // email validation
@@ -89,54 +88,51 @@ const Signin: React.FC = () => {
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
-        <div className={style.formIntro}>
-          <h2 style={{ color: "green" }} data-testid="signinTitle">
+        <div className={styles.formIntro}>
+          <p style={{ fontWeight: 600 }} data-testid="signinTitle">
             Sign in
-          </h2>
+          </p>
           <p>
             New customer?
-            <span>
-              <strong style={{ color: "green", marginBottom: "10px" }}>
-                Register here
-              </strong>
-            </span>
+            <span className={styles.textspan}> Register here</span>
           </p>
-          <p style={{ color: "red" }}>{errorMessage}</p>
+          <p style={{ color: "red", paddingTop: "1rem" }}>{errorMessage}</p>
         </div>
-        <Divider />
+
         <form onSubmit={handleSubmit} data-testid="signInForm">
+          <InputLabel shrink htmlFor="standard-username">
+            Username
+          </InputLabel>
           <TextField
-            id="standard-basic"
-            label="Email"
-            variant="standard"
+            id="standard-username"
+            label="Username"
+            variant="outlined"
             onChange={handleEmailChange}
+            className={styles.textinp}
           />
+          <InputLabel shrink htmlFor="standard-Password">
+            Password
+          </InputLabel>
           <TextField
-            id="standard-basic"
+            id="standard"
             label="Password"
-            variant="standard"
+            variant="outlined"
             type="password"
             onChange={handlePasswordChange}
           />
-          <div className={style.accountRecovery}>
-            <p>forgot username/password?</p>
+          <div className={styles.btnSubmitContainer}>
+            <Button
+              variant="contained"
+              color="success"
+              type="submit"
+              className={styles.btnSubmit}
+            >
+              login
+            </Button>
+
+            <p className={styles.accountRecovery}>forgot username/password?</p>
           </div>
-          <Button
-            variant="contained"
-            startIcon={isloading ? <Prograss /> : ""}
-            color="success"
-            type="submit"
-            disabled={btnDisable}
-          >
-            Sign in
-          </Button>
         </form>
-        <Divider>Or continue with</Divider>
-        <div>
-          <Button variant="contained" startIcon={<FaGoogle />} color="success">
-            Google
-          </Button>
-        </div>
       </CardContent>
     </Card>
   );

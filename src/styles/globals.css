@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
-
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +14,6 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 30vh;
 }
 
 /* Media query for screens smaller than 768px */

@@ -18,3 +18,20 @@
   align-items: center;
   justify-content: center;
 }
+.btnSignup {
+  background-color: whitesmoke;
+  color: #00a826;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.signin:hover {
+  background-color: lightgreen;
+}
+.signin {
+  text-transform: capitalize;
+  font-weight: bold;
+  background-color: #00a826;
+}
+.btnSignup:hover {
+  background-color: lightgreen;
+}

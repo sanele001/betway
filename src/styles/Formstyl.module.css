@@ -1,16 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@200;300;400;900&display=swap");
+
 .formIntro {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: "Heebo", sans-serif;
+  font-weight: 400;
 }
 .formIntro h2 {
   margin: 0;
   padding: 0;
 }
+.textspan {
+  border-bottom: 2px dotted #00a826;
+  color: #00a826;
+  font-weight: 500;
+}
 
-.accountRecovery {
+.btnSubmitContainer {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  color: #00a826;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+.InputLabel {
+  margin-bottom: 1rem;
+}
+
+.textinp {
+  margin-bottom: 1rem;
+}
+
+.btnSubmit {
+  background-color: #00a826;
+  color: "white";
+  font-weight: bold;
+  text-transform: capitalize;
+  padding: 0.7rem;
+  width: 40%;
+  border-radius: 0px;
+  margin-bottom: 1rem;
+}
+.accountRecovery {
+  font-family: "Heebo", sans-serif;
+  font-weight: 500;
 }

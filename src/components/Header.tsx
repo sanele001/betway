@@ -14,15 +14,18 @@ const Header: React.FC<props> = ({ handleModalOpen }) => {
           <Image src="/betway_logo.png" alt="betway logo" fill={true} />
         </div>
         <div className={styles.btnHolder}>
-          <Stack direction="row" spacing={2}>
+          <Stack direction="row" spacing={1}>
             <Button
               variant="contained"
-              color="success"
               onClick={() => handleModalOpen()}
+              className={styles.signin}
             >
               Login
             </Button>
-            <Button variant="outlined" color="success">
+            <Button
+              className={styles.btnSignup}
+              onClick={() => handleModalOpen()}
+            >
               Sign up
             </Button>
           </Stack>
